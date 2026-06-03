@@ -14,7 +14,7 @@ public class MySketch extends PApplet {
     int stage = 0;
     
     public void settings(){
-        size (400,400);
+        size (800,600);
     }
     
     public void setup(){
@@ -27,9 +27,12 @@ public class MySketch extends PApplet {
         background(255);
         if (stage == 0){
             fill(0);
-            text("My Cultural Story", 50, 50);
-            text("\"Kuafu Chasing the Sun\"", 50, 80);
-            text("Press enter to continue", 50, 110);
+            textSize(40);
+            text("My Cultural Story", 260, 100);
+            textSize(30);
+            text("\"Kuafu Chasing the Sun\"", 250, 150);
+            textSize(20);
+            text("Press enter to continue", 305, 200);
           
         }else if (stage ==1 ){
             person.draw();
