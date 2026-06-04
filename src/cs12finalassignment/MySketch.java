@@ -5,12 +5,14 @@
 package cs12finalassignment;
 
 import processing.core.PApplet;
+import processing.core.PImage;
 /**
  *
  * @author 350265507
  */
 public class MySketch extends PApplet {
     private Person person;
+    private PImage bg;
     int stage = 0;
     
     public void settings(){
@@ -18,6 +20,7 @@ public class MySketch extends PApplet {
     }
     
     public void setup(){
+        bg = loadImage("images/background1.png");
         background(100, 100, 100);
         textSize(20);
         person = new Person(this, 200, 300, "Kuafu", 1, 2, "images/kuafu2.png");
@@ -26,6 +29,7 @@ public class MySketch extends PApplet {
     public void draw(){
         background(255);
         if (stage == 0){
+            image(bg, 0, 0, width, height);
             fill(0);
             textSize(40);
             text("My Cultural Story", 260, 100);
@@ -36,6 +40,17 @@ public class MySketch extends PApplet {
           
         }else if (stage ==1 ){
             person.draw();
+            if(keyPressed){
+                if(keyCode == RIGHT){
+                    person.move(person.speed, 0);
+                }else if(keyCode == LEFT){
+                    person.move(-person.speed, 0);
+                }else if(keyCode == UP){
+                    person.move(0, -person.speed);
+                }else if(keyCode == DOWN){
+                    person.move(0, person.speed);
+                }
+            }
         }
         
     }

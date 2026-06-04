@@ -59,22 +59,9 @@ public class Person {
      * @param dy integer variable used to determine whether it should move during x-axis
      */
     public void move(int dx, int dy){
-        if (dx > 0 && dy == 0){
-            this.x += (speed);
-            this.y += (dy);
-        }else if (dx < 0 && dy == 0){
-            this.x += (-speed);
-            this.y += (dy);
-        }else if (dx == 0 && dy > 0){
-            this.x += (dx);
-            this.y += (speed);
-        }else if (dx == 0 && dy < 0){
-            this.x += (dx);
-            this.y += (-speed);
-        }else{
-            this.x += (dx);
-            this.y += (dy);
-        }//use if statement to make the person move as the reight speed in different direction
+        this.x += dx;
+        this.y += dy;
+//use if statement to make the person move as the reight speed in different direction
         
     }
     
