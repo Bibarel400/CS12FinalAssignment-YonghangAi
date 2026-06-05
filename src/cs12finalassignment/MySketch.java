@@ -12,6 +12,7 @@ import processing.core.PImage;
  */
 public class MySketch extends PApplet {
     private Person person;
+    private Person person1;
     private PImage bg;
     int stage = 0;
     
@@ -23,7 +24,8 @@ public class MySketch extends PApplet {
         bg = loadImage("images/background1.png");
         background(100, 100, 100);
         textSize(20);
-        person = new Person(this, 200, 300, "Kuafu", 1, 2, "images/kuafu2.png");
+        person = new Person(this, 200, 300, "Kuafu", "2200", 2, "images/kuafu2.png");
+        person1 = new Person(this, 200, 300, "Kuafu", "4.6 Billion", 2, "images/sun.png");
     }
     
     public void draw(){
@@ -40,6 +42,7 @@ public class MySketch extends PApplet {
           
         }else if (stage ==1 ){
             person.draw();
+            person1.draw();
             if(keyPressed){
                 if(keyCode == RIGHT){
                     person.move(person.speed, 0);
@@ -50,6 +53,11 @@ public class MySketch extends PApplet {
                 }else if(keyCode == DOWN){
                     person.move(0, person.speed);
                 }
+            }
+            
+            if(person.isCollidingWith(person1)){
+                fill(255,0,0);
+                this.text("Yeath!!!", person.x, person.y);
             }
         }
         

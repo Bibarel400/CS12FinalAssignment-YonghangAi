@@ -13,7 +13,7 @@ public class Person {
     public int x;
     public int y;
     private String name;
-    private int age;
+    private String age;
     int speed = 0;
     //create variables for the draw of image and its size
     private PApplet app;
@@ -29,7 +29,7 @@ public class Person {
      * @param speed integer variable for speed
      * @param imagePath used to show the image
      */
-    public Person(PApplet p, int x, int y, String name, int age, int speed, String imagePath){
+    public Person(PApplet p, int x, int y, String name, String age, int speed, String imagePath){
         this.x = x;
         this.y = y;
         this.app = p;
