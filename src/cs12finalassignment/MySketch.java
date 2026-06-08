@@ -14,6 +14,7 @@ public class MySketch extends PApplet {
     private Person person;
     private Person person1;
     private PImage bg;
+    private PImage kuafupixel;
     int stage = 0;
     
     public void settings(){
@@ -26,7 +27,9 @@ public class MySketch extends PApplet {
         textSize(20);
         person = new Person(this, 200, 300, "Kuafu", "2200", 2, "images/kuafu2.png");
         person1 = new Person(this, 200, 300, "Kuafu", "4.6 Billion", 2, "images/sun.png");
+        kuafupixel = loadImage("images/kuafupixel.png");
     }
+    
     
     public void draw(){
         background(255);
@@ -54,15 +57,13 @@ public class MySketch extends PApplet {
                     person.move(0, person.speed);
                 }
             }
-            
             if(person.isCollidingWith(person1)){
-                fill(255,0,0);
-                this.text("Yeath!!!", person.x, person.y);
+                //fill(255,0,0);
+                //this.text("Yeath!!!", person.x, person.y);
+                image(kuafupixel, 0, 400);
             }
         }
-        
     }
-    
     public void keyPressed(){
         if (stage == 0){
             if (keyCode == ENTER){
