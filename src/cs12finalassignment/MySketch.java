@@ -25,8 +25,8 @@ public class MySketch extends PApplet {
         bg = loadImage("images/background1.png");
         background(100, 100, 100);
         textSize(20);
-        person = new Person(this, 200, 300, "Kuafu", "2200", 2, "images/kuafu2.png");
-        person1 = new Person(this, 200, 300, "Kuafu", "4.6 Billion", 2, "images/sun.png");
+        person = new Person(this,"Kuafu", "2200", 2, "images/kstand2.png");
+        person1 = new Person(this,"Kuafu", "4.6 Billion", 2, "images/sun.png");
         kuafupixel = loadImage("images/kuafupixel.png");
     }
     
@@ -43,7 +43,13 @@ public class MySketch extends PApplet {
             textSize(20);
             text("Press enter to continue", 305, 200);
           
-        }else if (stage ==1 ){
+            
+        }else if (stage == 1){
+            person.draw();
+            person.location(400, 300);
+            
+            
+        }else if (stage ==2 ){
             person.draw();
             person1.draw();
             if(keyPressed){

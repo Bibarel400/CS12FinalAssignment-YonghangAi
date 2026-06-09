@@ -8,12 +8,12 @@ package cs12finalassignment;
 import processing.core.PApplet;
 import processing.core.PImage;
 
-public class Person {
+public class Background {
     //create various variables for the location, name, age and speed of movement
     public int x;
     public int y;
     private String name;
-    private String age;
+    
     int speed = 0;
     //create variables for the draw of image and its size
     private PApplet app;
@@ -22,16 +22,18 @@ public class Person {
     /**
      * the constructor for person
      * @param p used to draw
+     * @param x integer variable for the location in x-axis
+     * @param y integer variable for the location in y-axis
      * @param name string variable for name
-     * @param age integer variable for age
      * @param speed integer variable for speed
      * @param imagePath used to show the image
      */
-    public Person(PApplet p,String name, String age, int speed, String imagePath){
-        
+    public Background(PApplet p, int x, int y, String name, int speed, String imagePath){
+        this.x = x;
+        this.y = y;
         this.app = p;
         this.name = name;
-        this.age = age;
+     
         this.speed = speed;
         this.image = app.loadImage(imagePath);
         
@@ -61,30 +63,6 @@ public class Person {
 //use if statement to make the person move as the reight speed in different direction
         
     }
-    /**
-     * the method used to determine the location of person
-     * @param x the location of person in x-axis
-     * @param y the location of person in y-axis
-     */
-    public void location(int x, int y){
-        centerx(x);
-        centery(y);
-    }
-    /**
-     * the method used to translate the x value in center to the left top corner
-     * @param x the location of person in x-axis
-     */
-    public void centerx(int x){
-        this.x = x-(image.width)/2; 
-    }
-    /**
-     * the method used to translate the y value in center to the left top corner
-     * @param y the location of person in y-axis
-     */
-    public void centery(int y){
-        this.y = y-(image.height)/2; 
-    }
-    
     
     //public void moveTo(int dx, int dy){
         //this.x = dx;
@@ -97,11 +75,11 @@ public class Person {
         app.image(image, x, y);
     }
     /**
-     * the method used to determine whethr person is collided with another person
+     * the method used to determine whether person is collided with another person
      * @param other the another person
      * @return a boolean for whether the colliding is happened
      */
-    public boolean isCollidingWith(Person other) {
+    public boolean isCollidingWith(Background other) {
         //int centerX = x+(image.pixelWidth/2);
         //int centerY = y+(image.pixelHeight/2);
         //int otherCenterX = other.x +(other.image.pixelWidth/2);
@@ -140,7 +118,7 @@ public class Person {
         int g = 20;
         app.fill(0);
         app.text("Name: "+name, x, y-height-g*4);
-        app.text("Age: "+age, x, y-height-g*3);
+
         app.text("Speed: "+speed, x, y-height-g*2);
         app.text("X/Y: "+x+"/"+y, x, y-height-g*1);
     }
