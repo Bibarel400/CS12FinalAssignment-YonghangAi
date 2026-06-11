@@ -4,6 +4,9 @@
  */
 package cs12finalassignment;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.Scanner;
 import processing.core.PApplet;
 import processing.core.PImage;
 /**
@@ -16,6 +19,10 @@ public class MySketch extends PApplet {
     private PImage bg;
     private PImage kuafupixel;
     int stage = 0;
+    int stageE = 0;
+    
+    String [] Words = new String [3];
+    
     
     public void settings(){
         size (800,600);
@@ -45,8 +52,15 @@ public class MySketch extends PApplet {
           
             
         }else if (stage == 1){
+            background(0);
+            
             person.draw();
             person.location(400, 300);
+            fill(255);
+            textSize(30);
+            if (stageE == 0){
+                text("Long long ago, there is a gaint named Kuafu", 50, 500);
+            }else if(stageE == 1){}
             
             
         }else if (stage ==2 ){
@@ -73,8 +87,29 @@ public class MySketch extends PApplet {
     public void keyPressed(){
         if (stage == 0){
             if (keyCode == ENTER){
+                
+                try{//use try catch statement to operate the file input
+                Scanner Fi = new Scanner(new File( "Word.txt"));//create a scanner method to scan the content of file
+                int n = 0;//create the integer veriable for the location of date for each array
+                while(Fi.hasNext()){//use while loop to input each line of file
+                    String output = Fi.nextLine();//store the date from file into the string variable
+                    Words[n]= output;
+                    n+=1;//change to next position
+                }
+                Fi.close();//close the method
+
+                }catch (IOException ioException){//catch the error
+                    System.err.println("Java Exception: " + ioException);//output error
+                }
                 stage = 1;
             }
+        }else if(stage == 1){
+            for (int i=0; i<3; i++){
+                
+            }
+            
+            
+            
         }
     }
 }
