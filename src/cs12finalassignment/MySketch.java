@@ -15,7 +15,7 @@ import processing.core.PImage;
  */
 public class MySketch extends PApplet {
     private Person person;
-    private Person person1;
+    private Background Back;
     private PImage bg;
     private PImage kuafupixel;
     int stage = 0;
@@ -32,9 +32,9 @@ public class MySketch extends PApplet {
         bg = loadImage("images/background1.png");
         background(100, 100, 100);
         textSize(20);
-        person = new Person(this,"Kuafu", "2200", 2, "images/kstand2.png");
-        person1 = new Person(this,"Kuafu", "4.6 Billion", 2, "images/sun.png");
-        kuafupixel = loadImage("images/kuafupixel.png");
+        person = new Person(this,"Kuafu", "2200", 2, "images/face1.png");
+        Back = new Background(this, "background1", "images/background2.png");
+        
     }
     
     
@@ -58,14 +58,22 @@ public class MySketch extends PApplet {
             person.location(400, 300);
             fill(255);
             textSize(30);
-            if (stageE == 0){
-                text("Long long ago, there is a gaint named Kuafu", 50, 500);
-            }else if(stageE == 1){}
+            if(stageE == 0){
+                text(Words[stageE], 50, 500);
+            }else if (stageE == 1){
+                text(Words[stageE], 50, 500);
+            }else if (stageE == 2){
+                text(Words[stageE], 50, 500);
+            }
+                    
+                    
+               
+            
             
             
         }else if (stage ==2 ){
             person.draw();
-            person1.draw();
+           
             if(keyPressed){
                 if(keyCode == RIGHT){
                     person.move(person.speed, 0);
@@ -77,11 +85,11 @@ public class MySketch extends PApplet {
                     person.move(0, person.speed);
                 }
             }
-            if(person.isCollidingWith(person1)){
+            //if(person.isCollidingWith(person1)){
                 //fill(255,0,0);
                 //this.text("Yeath!!!", person.x, person.y);
-                image(kuafupixel, 0, 400);
-            }
+                //image(kuafupixel, 0, 400);
+            //}
         }
     }
     public void keyPressed(){
@@ -89,14 +97,14 @@ public class MySketch extends PApplet {
             if (keyCode == ENTER){
                 
                 try{//use try catch statement to operate the file input
-                Scanner Fi = new Scanner(new File( "Word.txt"));//create a scanner method to scan the content of file
-                int n = 0;//create the integer veriable for the location of date for each array
-                while(Fi.hasNext()){//use while loop to input each line of file
-                    String output = Fi.nextLine();//store the date from file into the string variable
-                    Words[n]= output;
-                    n+=1;//change to next position
-                }
-                Fi.close();//close the method
+                    Scanner Fi = new Scanner(new File( "Word.txt"));//create a scanner method to scan the content of file
+                    int n = 0;//create the integer veriable for the location of date for each array
+                    while(Fi.hasNext()){//use while loop to input each line of file
+                        String output = Fi.nextLine();//store the date from file into the string variable
+                        Words[n]= output;
+                        n+=1;//change to next position
+                    }
+                    Fi.close();//close the method
 
                 }catch (IOException ioException){//catch the error
                     System.err.println("Java Exception: " + ioException);//output error
@@ -104,9 +112,13 @@ public class MySketch extends PApplet {
                 stage = 1;
             }
         }else if(stage == 1){
-            for (int i=0; i<3; i++){
-                
+            if (stageE >= 3){
+                stage = 2;
             }
+            while (keyCode == ENTER){
+                stageE +=1;
+            }
+            
             
             
             

@@ -22,19 +22,14 @@ public class Background {
     /**
      * the constructor for person
      * @param p used to draw
-     * @param x integer variable for the location in x-axis
-     * @param y integer variable for the location in y-axis
      * @param name string variable for name
      * @param speed integer variable for speed
      * @param imagePath used to show the image
      */
-    public Background(PApplet p, int x, int y, String name, int speed, String imagePath){
-        this.x = x;
-        this.y = y;
+    public Background(PApplet p, String name, String imagePath){
+        
         this.app = p;
         this.name = name;
-     
-        this.speed = speed;
         this.image = app.loadImage(imagePath);
         
         this.width = image.width;
@@ -62,6 +57,16 @@ public class Background {
         this.y += dy;
 //use if statement to make the person move as the reight speed in different direction
         
+    }
+    
+    /**
+     * the method used to determine the location of person
+     * @param x the location of person in x-axis
+     * @param y the location of person in y-axis
+     */
+    public void location(int x, int y){
+        this.x = x;
+        this.y = y;
     }
     
     //public void moveTo(int dx, int dy){
