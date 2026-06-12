@@ -23,7 +23,6 @@ public class Background {
      * the constructor for person
      * @param p used to draw
      * @param name string variable for name
-     * @param speed integer variable for speed
      * @param imagePath used to show the image
      */
     public Background(PApplet p, String name, String imagePath){
@@ -39,12 +38,8 @@ public class Background {
      * method used to change speed when it is necessary with the parameter of string
      * @param n string variable for speed when it is not an exception
      */
-    public void setSpeed(String n){
-        try {//use try - catch to determine whether the string could use for speed
-                this.speed = Integer.parseInt(n);
-            } catch (NumberFormatException e) {
-                this.speed = 1;//make speed back to original value when it is not work
-            }
+    public void setSpeed(int n){
+        this.speed = n;
     
     }
     /**
@@ -59,14 +54,29 @@ public class Background {
         
     }
     
-    /**
+        /**
      * the method used to determine the location of person
      * @param x the location of person in x-axis
      * @param y the location of person in y-axis
      */
     public void location(int x, int y){
         this.x = x;
-        this.y = y;
+        centery(y);
+        
+    }
+    /**
+     * the method used to translate the x value in center to the left top corner
+     * @param x the location of person in x-axis
+     */
+    public void centerx(int x){
+        this.x = x-(image.width)/2; 
+    }
+    /**
+     * the method used to translate the y value in center to the left top corner
+     * @param y the location of person in y-axis
+     */
+    public void centery(int y){
+        this.y = y-(image.height)/2; 
     }
     
     //public void moveTo(int dx, int dy){

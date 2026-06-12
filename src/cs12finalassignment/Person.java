@@ -9,6 +9,8 @@ import processing.core.PApplet;
 import processing.core.PImage;
 
 public class Person {
+    public Body body;
+    
     //create various variables for the location, name, age and speed of movement
     public int x;
     public int y;
@@ -27,8 +29,8 @@ public class Person {
      * @param speed integer variable for speed
      * @param imagePath used to show the image
      */
-    public Person(PApplet p,String name, String age, int speed, String imagePath){
-        
+    public Person(PApplet p,String name, String age, int speed, Body body,  String imagePath){
+        this.body = body;
         this.app = p;
         this.name = name;
         this.age = age;
@@ -50,6 +52,14 @@ public class Person {
             }
     
     }
+    
+    public void setBody(Body body){
+        this.body = body;
+    
+    }
+    
+    
+    
     /**
      * the method used to let person move
      * @param dx integer variable used to determine whether it should move during x-axis
@@ -69,6 +79,8 @@ public class Person {
     public void location(int x, int y){
         centerx(x);
         centery(y);
+        
+        body.location(x, y);
     }
     /**
      * the method used to translate the x value in center to the left top corner
@@ -94,6 +106,7 @@ public class Person {
      * the method used to draw person
      */
     public void draw(){
+        body.draw();
         app.image(image, x, y);
     }
     /**
