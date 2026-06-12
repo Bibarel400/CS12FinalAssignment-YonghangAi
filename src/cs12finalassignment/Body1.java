@@ -8,7 +8,7 @@ package cs12finalassignment;
 import processing.core.PApplet;
 import processing.core.PImage;
 
-public class Body {
+public class Body1 {
     //public Collision collision;
     //create various variables for the location, name, age and speed of movement
     
@@ -29,7 +29,7 @@ public class Body {
      * @param speed integer variable for speed
      * @param imagePath used to show the image
      */
-    public Body(PApplet p,String name, int adjustx,int adjusty, int speed,  String imagePath){
+    public Body1(PApplet p,String name, int adjustx,int adjusty, int speed,  String imagePath){
         this.app = p;
         this.name = name;
         this.adjustx = adjustx;
@@ -104,7 +104,7 @@ public class Body {
      * @param other the another person
      * @return a boolean for whether the colliding is happened
      */
-    public boolean isCollidingWith(Body other) {
+    public boolean isCollidingWith(Body1 other) {
         //int centerX = x+(image.pixelWidth/2);
         //int centerY = y+(image.pixelHeight/2);
         //int otherCenterX = other.x +(other.image.pixelWidth/2);

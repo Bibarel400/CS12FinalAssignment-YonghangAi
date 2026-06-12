@@ -55,6 +55,7 @@ public class Person {
     
     public void setBody(Body body){
         this.body = body;
+        body.location(x, y);
     
     }
     

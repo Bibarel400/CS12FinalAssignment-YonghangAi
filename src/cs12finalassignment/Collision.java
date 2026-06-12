@@ -8,38 +8,31 @@ package cs12finalassignment;
 import processing.core.PApplet;
 import processing.core.PImage;
 
-public class Body {
-    //public Collision collision;
+public class Collision {
     //create various variables for the location, name, age and speed of movement
     
     public int x;
     public int y;
     public int adjustx;
     public int adjusty;
-    private String name;
     int speed = 0;
     //create variables for the draw of image and its size
     private PApplet app;
     PImage image;
-    public int width, height;
+    private int width, height;
     /**
      * the constructor for person
      * @param p used to draw
-     * @param name string variable for name
      * @param speed integer variable for speed
-     * @param imagePath used to show the image
      */
-    public Body(PApplet p,String name, int adjustx,int adjusty, int speed,  String imagePath){
+    public Collision(PApplet p, int width, int height, int adjustx,int adjusty, int speed){
         this.app = p;
-        this.name = name;
         this.adjustx = adjustx;
         this.adjusty = adjusty;
-        
+        this.width = width;
+        this.height = height;
         this.speed = speed;
-        this.image = app.loadImage(imagePath);
         
-        this.width = image.width;
-        this.height = image.height;
     }
     /**
      * method used to change speed when it is necessary with the parameter of string
@@ -97,14 +90,15 @@ public class Body {
      * the method used to draw person
      */
     public void draw(){
-        app.image(image, x, y);
+        app.fill(0);
+        app.rect(x, y, width, height);
     }
     /**
      * the method used to determine whethr person is collided with another person
      * @param other the another person
      * @return a boolean for whether the colliding is happened
      */
-    public boolean isCollidingWith(Body other) {
+    public boolean isCollidingWith(Collision other) {
         //int centerX = x+(image.pixelWidth/2);
         //int centerY = y+(image.pixelHeight/2);
         //int otherCenterX = other.x +(other.image.pixelWidth/2);
@@ -142,7 +136,6 @@ public class Body {
     public void displayInfo(PApplet p){
         int g = 20;
         app.fill(0);
-        app.text("Name: "+name, x, y-height-g*4);
     
         app.text("Speed: "+speed, x, y-height-g*2);
         app.text("X/Y: "+x+"/"+y, x, y-height-g*1);

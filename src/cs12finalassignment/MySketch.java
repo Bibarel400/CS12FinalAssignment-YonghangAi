@@ -15,7 +15,7 @@ import processing.core.PImage;
  */
 public class MySketch extends PApplet {
     private Person person;
-    private Body body1;
+    private Body1 body1;
     private Body body2;
     private Body body3;
     int speedofperson = 0;
@@ -26,6 +26,9 @@ public class MySketch extends PApplet {
     private PImage kuafupixel;
     int stage = 0;
     int stageE = 0;
+    
+    int xx = 250;
+    int yy = 100;
     
     int t3 = 0;
     int ut3 = 0;
@@ -41,9 +44,9 @@ public class MySketch extends PApplet {
         bg = loadImage("images/background1.png");
         background(100, 100, 100);
         textSize(20);
-        body1 = new Body(this,"stand", speedofperson, "images/body1.1.png");
-        body2 = new Body(this,"stand", speedofperson, "images/IMG_0152.png");
-        body3 = new Body(this,"stand", speedofperson, "images/IMG_0164.png");
+        body1 = new Body1(this,"stand",0,80, speedofperson, "images/body1.1.png");
+        body2 = new Body(this,"stand",40-body2.width/2,110-body2.height/2, speedofperson, "images/IMG_0152.png");
+        body3 = new Body(this,"stand",60-body3.width/2,110-body3.height/2, speedofperson, "images/IMG_0164.png");
         person = new Person(this,"Kuafu", "2200", speedofperson, body1, "images/face1.1.png");
         back1 = new Background(this, "background1", "images/background3.png");
         back2 = new Background(this, "background1", "images/background3.png");
@@ -94,9 +97,11 @@ public class MySketch extends PApplet {
             //}
         }else if (stage ==3){
             ut3+=1;
+            person.location(xx, yy);
             back1.draw();
             back2.draw();
             person.draw();
+            
             if (back1.x == (-700)){
                 back2.x = 800;
             }
@@ -113,8 +118,11 @@ public class MySketch extends PApplet {
                 t3+=1;
                 person.setBody(body3);
             }else{
-                t3 =0;
+                t3 = 0;
             }
+            
+            
+            
         }
     }
     public void keyPressed(){
